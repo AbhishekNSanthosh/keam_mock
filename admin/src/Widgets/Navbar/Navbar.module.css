@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    width: 100%;
+    background: #fff;
+    height: 8vh;
+    align-items: center;
+    justify-content: center;
+    /* position: fixed; */
+    padding: 1rem;
+}
+
+.wrap {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.welcome{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.left{
+    flex:6
+}
+
+.right{
+    flex: 6;
+}
