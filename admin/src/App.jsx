@@ -6,6 +6,7 @@ import {
 import Layout from './Layout/Layout';
 import Upload from './modules/upload/Upload';
 import ViewQuestion from './modules/ViewQuestion/ViewQuestion';
+import Home from './modules/Home/Home';
 
 function App() {
   const router = createBrowserRouter([
@@ -20,6 +21,10 @@ function App() {
         {
           path: '/upload',
           element: <Upload/>
+        },
+        {
+          path: '/home',
+          element: <Home/>
         },
         {
           path: '/view-question',
