@@ -9,8 +9,13 @@ export const navItems = [
     },
     {
         title: "View Stats",
-        url: "/view-stats",
+        url: "/view-question",
     },
 ]
 
-export const backend = "https://sparkz-backend.onrender.com/api/v2/user"
+export const backend = "https://sparkz-backend.onrender.com"
+
+export const routes = {
+    getAllQuestion:"/api/v2/user/getAllQuestion",
+    uploadQue:"/api/v2/user/insertQuestion"
+}

@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import Layout from './Layout/Layout';
 import Upload from './modules/upload/Upload';
+import ViewQuestion from './modules/ViewQuestion/ViewQuestion';
 
 function App() {
   const router = createBrowserRouter([
@@ -19,6 +20,10 @@ function App() {
         {
           path: '/upload',
           element: <Upload/>
+        },
+        {
+          path: '/view-question',
+          element: <ViewQuestion/>
         },
       ]
     }

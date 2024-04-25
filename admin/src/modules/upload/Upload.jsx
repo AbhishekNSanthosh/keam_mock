@@ -1,7 +1,7 @@
 import React, { useState, useRef, useMemo } from 'react';
 import JoditEditor from 'jodit-react';
 import styles from './Upload.module.css';
-import { backend } from '../../common/constants/constants';
+import { backend, routes } from '../../common/constants/constants';
 import axios from 'axios'
 import { toast } from 'react-toastify';
 export default function Upload({ placeholder }) {
@@ -76,7 +76,7 @@ export default function Upload({ placeholder }) {
 
     const upload = async () => {
         try {
-            const response = await axios.post(backend + "/insertQuestion", {
+            const response = await axios.post(backend+routes.uploadQue, {
                 question,
                 a,
                 b,
