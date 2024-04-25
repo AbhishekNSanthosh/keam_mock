@@ -8,7 +8,7 @@ export const navItems = [
         url: "/upload",
     },
     {
-        title: "View Stats",
+        title: "View Questions",
         url: "/view-question",
     },
 ]
