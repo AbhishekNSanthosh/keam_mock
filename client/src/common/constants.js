@@ -1,5 +1,5 @@
 export const backend = "https://sparkz-backend.onrender.com";
 
 export const routes = {
-    loginRoute:"/keamLogin"
+    loginRoute:"/api/v2/user/keamLogin"
 }

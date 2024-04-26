@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import styles from './Login.module.css'
 import exam from '../../../assets/Exams.gif'
+import { login } from '../services/api';
+import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const handleSubmit = () => {
+  const [dob, setDob] = useState('');
 
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    login(email, dob, navigate);
   }
   return (
     <div className={styles.container}>
@@ -21,13 +26,14 @@ export default function Login() {
           <div className={styles.row}>
             <input onChange={(e) => {
               setEmail(e.target.value)
-            }} type="text" placeholder='Email' className={styles.inp} />
-            <input onChange={(e) => {
-              setPassword(e.target.value)
+            }} value={email} type="text" placeholder='Email' className={styles.inp} />
+            <input value={dob} onChange={(e) => {
+              setDob(e.target.value)
             }} type="date" placeholder='Date of birth' className={styles.inp} />
           </div>
           <div className={styles.row}>
-            <button onClick={()=>{
+            <button onClick={(e) => {
+              e.preventDefault();
               handleSubmit();
             }} className={styles.submit}>Submit</button>
           </div>
