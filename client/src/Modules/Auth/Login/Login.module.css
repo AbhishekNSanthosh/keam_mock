@@ -1,0 +1,87 @@
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.left {
+    flex: 6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 6;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 2rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 30vw;
+    height: 30vw;
+    border-radius: 10px;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.inp {
+    width: 100%;
+    padding: 1rem 0.2rem;
+    border: none;
+    outline: none;
+    background-color: #ececec;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.inp::placeholder {
+    color: gray;
+}
+
+.submit {
+    padding: 1rem;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    background: red;
+    font-weight: 500;
+    color: #fff;
+}
+
+.title {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+
+/* input[type="date"]:not(.has-value):before {
+    color: #969696;
+    content: attr(placeholder);
+} */
+
+.exam{
+    width: 40vw;
+}
