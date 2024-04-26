@@ -5,16 +5,33 @@ import { publicGateway } from "../../../services/apiGateways"
 export const login = async (
     email,
     dob,
-    navigate
+    navigate,
+    setIsLoading,
+    setEmail,
+    setDob
 ) => {
+    setIsLoading(true)
     try {
-        const response = publicGateway.post(routes?.loginRoute, {
+        const response = await publicGateway.post(routes?.loginRoute, {
             email, dob
         })
-        console.log(response)
-        localStorage.setItem(response?.data?.accessToken);
-        toast.success("Login successful")
+        console.log(response?.data?.accessToken)
+        toast.success("Login successful", {
+            theme: "colored",
+            position: "bottom-center"
+        })
+        localStorage.setItem('accessToken', response?.data?.accessToken);
+        setIsLoading(false);
+        setTimeout(() => {
+            navigate('/')
+        }, 500);
     } catch (error) {
-
+        setIsLoading(false)
+        toast.error(error?.response?.data?.message, {
+            theme: "colored",
+            position: "bottom-center"
+        })
+        setEmail('');
+        setDob('')
     }
 }

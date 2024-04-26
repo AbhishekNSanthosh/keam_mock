@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import Layout from './Layout/Layout';
 import Login from './Modules/Auth/Login/Login';
+import Home from './Modules/Home/Home';
 
 function App() {
   const router = createBrowserRouter([
@@ -16,10 +17,10 @@ function App() {
       path: "/",
       element: <Layout />,
       children: [
-        // {
-        //   path: '/upload',
-        //   element: <Upload/>
-        // },
+        {
+          path: '/home',
+          element: <Home/>
+        },
       ]
     }
   ]);

@@ -7,11 +7,12 @@ import { useNavigate } from 'react-router-dom'
 export default function Login() {
   const [email, setEmail] = useState('');
   const [dob, setDob] = useState('');
+  const [isLoading, setIsLoading] = useState(false)
 
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    login(email, dob, navigate);
+    login(email, dob, navigate, setIsLoading,setEmail,setDob);
   }
   return (
     <div className={styles.container}>
@@ -32,10 +33,10 @@ export default function Login() {
             }} type="date" placeholder='Date of birth' className={styles.inp} />
           </div>
           <div className={styles.row}>
-            <button onClick={(e) => {
+            <button disabled={isLoading} onClick={(e) => {
               e.preventDefault();
               handleSubmit();
-            }} className={styles.submit}>Submit</button>
+            }} className={styles.submit}>{isLoading ? "Please wait..." : "Submit"}</button>
           </div>
         </div>
       </div>
