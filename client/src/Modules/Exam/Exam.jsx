@@ -6,6 +6,7 @@ import { getRandomQuestions } from './services/api';
 export default function Exam() {
   const [time, setTime] = useState(5 * 60);
   const [ques, setQues] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState([]);
 
   const navigate = useNavigate();
 
@@ -57,6 +58,20 @@ export default function Exam() {
   useEffect(() => {
     getRandomQuestions(setQues)
   }, [])
+
+  const handleOptionSelect = (questionId, selectedValue) => {
+    const updatedOptions = [...selectedOptions];
+    const index = updatedOptions.findIndex(option => option._id === questionId);
+    if (index !== -1) {
+      updatedOptions[index].selectedValue = selectedValue;
+    } else {
+      updatedOptions.push({ _id: questionId, selectedValue });
+    }
+    setSelectedOptions(updatedOptions);
+  };
+
+  console.log(selectedOptions)
+
   return (
     <div className={styles.container}>
       <div className={styles.wrap}>
@@ -64,65 +79,32 @@ export default function Exam() {
         <div className={styles.questionRow}>
           {ques?.map((que, index) => (
             <div key={index} className={styles.queWrapCover}>
-            <div className={styles.queWrap}>
-              <div className={styles.queLeft}>
-                <span className={styles.index}>{index+1}.</span>
-              </div>
-              <div className={styles.queRight}>
-                <div className={styles.chooseitem}>
-                  <span className={styles.label} dangerouslySetInnerHTML={{ __html: que?.question }}></span>
+              <div className={styles.queWrap}>
+                <div className={styles.queLeft}>
+                  <span className={styles.index}>{index + 1}.</span>
                 </div>
+                <div className={styles.queRight}>
+                  <div className={styles.chooseitem}>
+                    <span className={styles.label} dangerouslySetInnerHTML={{ __html: que?.question }}></span>
+                  </div>
 
-                <div className={styles.optionRow}>
-                  <div className={styles.radioItem}>
-                    <input
-                      type="radio"
-                      name={que?._id}
-                      value={que?.a}
-                      className={styles.radio}
-                    />
-                    <span className={styles.optionName} dangerouslySetInnerHTML={{ __html: "a) "+que?.a }}></span>
-                  </div>
-                  <div className={styles.radioItem}>
-                    <input
-                      type="radio"
-                      name={que?._id}
-                      value={que?.b}
-                      className={styles.radio}
-                    />
-                    <span className={styles.optionName} dangerouslySetInnerHTML={{ __html: "b) "+que?.b }}></span>
-                  </div>
-                  <div className={styles.radioItem}>
-                    <input
-                      type="radio"
-                      name={que?._id}
-                      value={que?.c}
-                      className={styles.radio}
-                    />
-                    <span className={styles.optionName} dangerouslySetInnerHTML={{ __html: "c) "+que?.c }}></span>
-                  </div>
-                  <div className={styles.radioItem}>
-                    <input
-                      type="radio"
-                      name={que?._id}
-                      value={que?.d}
-                      className={styles.radio}
-                    />
-                    <span className={styles.optionName} dangerouslySetInnerHTML={{ __html: "d) "+que?.d }}></span>
-                  </div>
-                  <div className={styles.radioItem}>
-                    <input
-                      type="radio"
-                      name={que?._id}
-                      value={que?.e}
-                      className={styles.radio}
-                    />
-                    <span className={styles.optionName} dangerouslySetInnerHTML={{ __html: "e) "+que?.e }}></span>
+                  <div className={styles.optionRow}>
+                    {['a', 'b', 'c', 'd', 'e'].map((option, optionIndex) => (
+                      <div key={optionIndex} className={styles.radioItem}>
+                        <input
+                          type="radio"
+                          name={que._id}
+                          value={que[option]}
+                          className={styles.radio}
+                          onChange={() => handleOptionSelect(que._id, que[option])}
+                        />
+                        <span className={styles.optionName} dangerouslySetInnerHTML={{ __html: `${option}) ${que[option]}` }}></span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
-            </div>
-            <div className={styles.hr}></div>
+              <div className={styles.hr}></div>
             </div>
           ))}
         </div>

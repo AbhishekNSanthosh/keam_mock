@@ -98,3 +98,8 @@
     flex-direction: column;
     gap: 5vh;
 }
+
+.radio {
+    transform: scale(1.5);
+    cursor: pointer;
+}
