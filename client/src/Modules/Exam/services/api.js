@@ -13,3 +13,20 @@ export const getRandomQuestions = async (
         toast.error(error?.response?.data?.message)
     }
 }
+
+export const submitAnswersApi = async (
+    selectedOptions,
+    navigate
+) => {
+    try {
+        const response = await privateGateway.post(routes?.submitAnswers, {
+            answers: selectedOptions
+        });
+        localStorage.setItem('status', 'completed')
+        navigate('/dashboard/home');
+        toast.success(response?.data?.message)
+        console.log(response)
+    } catch (error) {
+        toast.error(error?.response?.data?.message)
+    }
+}

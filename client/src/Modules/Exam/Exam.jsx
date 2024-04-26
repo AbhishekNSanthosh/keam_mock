@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Exam.module.css';
 import { useNavigate } from 'react-router-dom';
-import { getRandomQuestions } from './services/api';
+import { getRandomQuestions, submitAnswersApi } from './services/api';
 
 export default function Exam() {
   const [time, setTime] = useState(5 * 60);
   const [ques, setQues] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ export default function Exam() {
   useEffect(() => {
     if (time === 0) {
       localStorage.setItem("status", "completed");
+      submitAnswersApi(selectedOptions, navigate);
       navigate('/dashboard/home');
     }
   }, [time, navigate]);
@@ -56,22 +58,30 @@ export default function Exam() {
 
 
   useEffect(() => {
+    if (localStorage.getItem('status') === "completed") {
+      navigate('/dashboard/home')
+    }
     getRandomQuestions(setQues)
   }, [])
 
   const handleOptionSelect = (questionId, selectedValue) => {
-    const updatedOptions = [...selectedOptions];
-    const index = updatedOptions.findIndex(option => option._id === questionId);
-    if (index !== -1) {
-      updatedOptions[index].selectedValue = selectedValue;
-    } else {
-      updatedOptions.push({ _id: questionId, selectedValue });
-    }
-    setSelectedOptions(updatedOptions);
+    setSelectedOptions(prevOptions => {
+      const updatedOptions = [...prevOptions];
+      const index = updatedOptions.findIndex(option => option._id === questionId);
+      if (index !== -1) {
+        updatedOptions[index].selectedValue = selectedValue;
+      } else {
+        updatedOptions.push({ _id: questionId, selectedValue });
+      }
+      return updatedOptions;
+    });
+    console.log(selectedOptions)
   };
 
-  console.log(selectedOptions)
 
+  const handleSubmit = () => {
+    submitAnswersApi(selectedOptions, navigate);
+  }
   return (
     <div className={styles.container}>
       <div className={styles.wrap}>
@@ -109,10 +119,33 @@ export default function Exam() {
           ))}
         </div>
 
+        <div className={styles.bottomRow}>
+          <button onClick={() => {
+            setModalOpen(true)
+          }} className={styles.submit}>Submit</button>
+        </div>
+
       </div>
       <div className={styles.timer}>
         {formatTime(time)}
       </div>
-    </div>
+      {modalOpen &&
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalBox}>
+            <span className={styles.txt}>Are you sure you want to submit ?</span>
+            <div className={styles.actionRow}>
+              <button className={styles.modalcancel} onClick={(e) => {
+                e.preventDefault();
+                setModalOpen(false);
+              }}>Cancel</button>
+              <button className={styles.modalsubmit} onClick={(e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}>Submit</button>
+            </div>
+          </div>
+        </div>
+      }
+    </div >
   )
 }

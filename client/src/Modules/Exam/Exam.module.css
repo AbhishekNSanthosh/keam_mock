@@ -39,7 +39,7 @@
     flex-direction: column;
     gap: 10vh;
     overflow-y: auto;
-    padding-bottom: 10vh;
+    padding-bottom: 3vh;
     width: 90vw;
 }
 
@@ -86,14 +86,14 @@
     font-weight: 500;
 }
 
-.hr{
+.hr {
     display: flex;
     height: 1px;
     margin-top: 3vh;
     border: 1px solid rgba(95, 95, 95, 0.212);
 }
 
-.queWrapCover{
+.queWrapCover {
     display: flex;
     flex-direction: column;
     gap: 5vh;
@@ -102,4 +102,88 @@
 .radio {
     transform: scale(1.5);
     cursor: pointer;
+}
+
+.bottomRow {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 5vh;
+}
+
+.submit {
+    width: 20vw;
+    background: red;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 1rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+
+.modalOverlay{
+    display: flex;
+    height: 88vh;
+    top: 12vh;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    position: absolute;
+    background: rgba(207, 207, 207, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+.modalBox{
+    width: 30vw;
+    height: 20vw;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    gap: 4vh;
+    background: #fff;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.actionRow{
+    display: flex;
+    gap: 2vw;
+}
+
+.modalsubmit{
+    background: red;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 10vw;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+
+.modalcancel{
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 10vw;
+    border: 1px solid red;
+    font-size: 1rem;
+    font-weight: 600;
+    color: red;
+    cursor: pointer;
+    outline: none;
 }
