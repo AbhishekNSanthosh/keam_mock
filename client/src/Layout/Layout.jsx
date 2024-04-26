@@ -8,11 +8,11 @@ const Layout = () => {
   const token = localStorage.getItem('accessToken');
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //     if (!token) {
-  //         navigate('/');
-  //     }
-  // }, []);
+  useEffect(() => {
+      if (!token) {
+          navigate('/');
+      }
+  }, []);
 
   return (
     <div className={styles.fullPage}>

@@ -10,16 +10,16 @@ import Home from './Modules/Home/Home';
 function App() {
   const router = createBrowserRouter([
     {
-      path: '/login',
-      element: <Login/>
+      path: '/',
+      element: <Login />
     },
     {
-      path: "/",
+      path: "/dashboard",
       element: <Layout />,
       children: [
         {
-          path: '/home',
-          element: <Home/>
+          path: '/dashboard/home',
+          element: <Home />
         },
       ]
     }

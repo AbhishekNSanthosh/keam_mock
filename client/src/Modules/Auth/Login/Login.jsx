@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Login.module.css'
 import exam from '../../../assets/Exams.gif'
 import { login } from '../services/api';
@@ -7,12 +7,19 @@ import { useNavigate } from 'react-router-dom'
 export default function Login() {
   const [email, setEmail] = useState('');
   const [dob, setDob] = useState('');
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const navigate = useNavigate();
+  const accessToken = localStorage.getItem('accessToken');
+  useEffect(() => {
+    if (accessToken) {
+      navigate('/dashboard/home')
+    }
+  }, [])
 
   const handleSubmit = () => {
-    login(email, dob, navigate, setIsLoading,setEmail,setDob);
+    login(email, dob, navigate, setIsLoading, setEmail, setDob);
   }
   return (
     <div className={styles.container}>
