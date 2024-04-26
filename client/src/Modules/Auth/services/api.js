@@ -1,6 +1,6 @@
 import { toast } from "react-toastify"
 import { routes } from "../../../common/constants"
-import { publicGateway } from "../../../services/apiGateways"
+import { privateGateway, publicGateway } from "../../../services/apiGateways"
 
 export const login = async (
     email,
@@ -15,16 +15,17 @@ export const login = async (
         const response = await publicGateway.post(routes?.loginRoute, {
             email, dob
         })
-        console.log(response?.data?.accessToken)
         toast.success("Login successful", {
             theme: "colored",
             position: "bottom-center"
         })
         localStorage.setItem('accessToken', response?.data?.accessToken);
+        const user = await privateGateway.get(routes?.userDetailRoute);
+        localStorage.setItem('user', JSON.stringify(user?.data?.data))
         setIsLoading(false);
         setTimeout(() => {
-            navigate('/')
-        }, 500);
+            navigate('/home')
+        }, 800);
     } catch (error) {
         setIsLoading(false)
         toast.error(error?.response?.data?.message, {

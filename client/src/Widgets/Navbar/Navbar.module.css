@@ -1,0 +1,99 @@
+.container {
+    display: flex;
+    padding: 3vh 5vw;
+    align-items: center;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.116);
+}
+
+.title{
+    font-weight: 500;
+}
+
+.wrap {
+    display: flex;
+    width: 100%;
+}
+
+.left {
+    flex: 6;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.right {
+    flex: 6;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 3wv;
+}
+
+.logout {
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.cancel {
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: #fff;
+    border: 1px solid red;
+    color: #ff0000b2;
+    cursor: pointer;
+    outline: none;
+}
+
+.modalOverlay {
+    display: flex;
+    height: 88vh;
+    top: 12vh;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    position: absolute;
+    background: rgba(207, 207, 207, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+.box {
+    height: 20vw;
+    width: 30vw;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+    background: #fff;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.modalRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3vw;
+}
+
+.welcome {
+    text-transform: capitalize;
+    margin-right: 3vw;
+    font-weight: 500;
+}
