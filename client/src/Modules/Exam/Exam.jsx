@@ -63,7 +63,8 @@ export default function Exam() {
 
         <div className={styles.questionRow}>
           {ques?.map((que, index) => (
-            <div className={styles.queWrap} key={index}>
+            <div key={index} className={styles.queWrapCover}>
+            <div className={styles.queWrap}>
               <div className={styles.queLeft}>
                 <span className={styles.index}>{index+1}.</span>
               </div>
@@ -80,7 +81,7 @@ export default function Exam() {
                       value={que?.a}
                       className={styles.radio}
                     />
-                    <span className={styles.optionName} dangerouslySetInnerHTML={{ __html: que?.a }}></span>
+                    <span className={styles.optionName} dangerouslySetInnerHTML={{ __html: "a) "+que?.a }}></span>
                   </div>
                   <div className={styles.radioItem}>
                     <input
@@ -89,7 +90,7 @@ export default function Exam() {
                       value={que?.b}
                       className={styles.radio}
                     />
-                    <span className={styles.optionName} dangerouslySetInnerHTML={{ __html: que?.b }}></span>
+                    <span className={styles.optionName} dangerouslySetInnerHTML={{ __html: "b) "+que?.b }}></span>
                   </div>
                   <div className={styles.radioItem}>
                     <input
@@ -98,7 +99,7 @@ export default function Exam() {
                       value={que?.c}
                       className={styles.radio}
                     />
-                    <span className={styles.optionName} dangerouslySetInnerHTML={{ __html: que?.c }}></span>
+                    <span className={styles.optionName} dangerouslySetInnerHTML={{ __html: "c) "+que?.c }}></span>
                   </div>
                   <div className={styles.radioItem}>
                     <input
@@ -107,7 +108,7 @@ export default function Exam() {
                       value={que?.d}
                       className={styles.radio}
                     />
-                    <span className={styles.optionName} dangerouslySetInnerHTML={{ __html: que?.d }}></span>
+                    <span className={styles.optionName} dangerouslySetInnerHTML={{ __html: "d) "+que?.d }}></span>
                   </div>
                   <div className={styles.radioItem}>
                     <input
@@ -116,10 +117,12 @@ export default function Exam() {
                       value={que?.e}
                       className={styles.radio}
                     />
-                    <span className={styles.optionName} dangerouslySetInnerHTML={{ __html: que?.e }}></span>
+                    <span className={styles.optionName} dangerouslySetInnerHTML={{ __html: "e) "+que?.e }}></span>
                   </div>
                 </div>
               </div>
+            </div>
+            <div className={styles.hr}></div>
             </div>
           ))}
         </div>
