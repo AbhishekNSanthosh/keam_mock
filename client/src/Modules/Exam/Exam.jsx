@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { getRandomQuestions, submitAnswersApi } from './services/api';
 
 export default function Exam() {
-  const [time, setTime] = useState(15 * 60);
+  const [time, setTime] = useState(3 * 60);
   const [ques, setQues] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
