@@ -15,8 +15,12 @@ export default function Home() {
                             <span className={styles.title}>Instructions</span>
                         </div>
                         <div className={styles.right}>
-                            <span className={styles.note}>Each Quesions carries 4 marks</span>
-                            <span className={styles.note}>Total Marks: 960</span>
+                            <span className={styles.note}>Total number of questions: 100.</span>
+                            <span className={styles.note}>Total Marks: 400</span>
+                            <span className={styles.note}>Marks awarded for correct answer: 4.</span>
+                            <span className={styles.note}>Marks deducted for wrong answer: 1.</span>
+                            <span className={styles.note}>Exam duration: 120 mins.</span>
+                            <span className={styles.note}>Do not hit back button while attending the exam.</span>
                         </div>
                     </div>
                 }

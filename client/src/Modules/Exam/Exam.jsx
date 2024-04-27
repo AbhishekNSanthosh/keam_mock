@@ -5,7 +5,7 @@ import { getRandomQuestions, submitAnswersApi } from './services/api';
 import { GridLoader } from 'react-spinners'
 
 export default function Exam() {
-  const [time, setTime] = useState(120 * 60);
+  const [time, setTime] = useState(.5 * 60);
   const [ques, setQues] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -32,6 +32,7 @@ export default function Exam() {
     if (time === 0) {
       localStorage.setItem("status", "completed");
       submitAnswersApi(selectedOptions, navigate);
+      console.log("called")
       navigate('/dashboard/home');
     }
   }, [time, navigate]);
