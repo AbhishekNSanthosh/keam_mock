@@ -142,7 +142,7 @@ export default function Exam() {
               <button disabled={isLoading} className={styles.modalsubmit} onClick={(e) => {
                 e.preventDefault();
                 handleSubmit();
-              }}>Submit</button>
+              }}>{isLoading ? "Please wait" : "Submit"}</button>
             </div>
           </div>
         </div>
