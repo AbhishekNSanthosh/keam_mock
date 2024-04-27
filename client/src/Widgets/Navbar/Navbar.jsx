@@ -17,11 +17,11 @@ export default function Navbar() {
                     <div className={styles.item}>
                         <span className={styles.welcome}>👋Welcome, {user?.firstName + " " + user?.lastName} </span>
                     </div>
-                    <div className={styles.item}>
+                    {/* <div className={styles.item}>
                         <button onClick={() => {
                             setModalOpen(!modalOpen);
                         }} className={styles.logout}>Logout</button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             {modalOpen &&

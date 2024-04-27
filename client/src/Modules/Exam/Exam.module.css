@@ -8,6 +8,15 @@
     height: 75vh;
 }
 
+.wcontainer{
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 .timer {
     display: flex;
     position: absolute;
