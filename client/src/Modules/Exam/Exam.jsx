@@ -8,6 +8,7 @@ export default function Exam() {
   const [ques, setQues] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [isLoading,setIsLoading] = useState(false)
 
   const navigate = useNavigate();
 
@@ -80,7 +81,7 @@ export default function Exam() {
 
 
   const handleSubmit = () => {
-    submitAnswersApi(selectedOptions, navigate);
+    submitAnswersApi(selectedOptions, navigate,setIsLoading);
   }
   return (
     <div className={styles.container}>
@@ -138,7 +139,7 @@ export default function Exam() {
                 e.preventDefault();
                 setModalOpen(false);
               }}>Cancel</button>
-              <button className={styles.modalsubmit} onClick={(e) => {
+              <button disabled={isLoading} className={styles.modalsubmit} onClick={(e) => {
                 e.preventDefault();
                 handleSubmit();
               }}>Submit</button>

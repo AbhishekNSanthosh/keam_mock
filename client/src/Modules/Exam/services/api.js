@@ -16,8 +16,10 @@ export const getRandomQuestions = async (
 
 export const submitAnswersApi = async (
     selectedOptions,
-    navigate
+    navigate,
+    setIsLoading
 ) => {
+    setIsLoading(true)
     try {
         const response = await privateGateway.post(routes?.submitAnswers, {
             answers: selectedOptions
@@ -26,7 +28,9 @@ export const submitAnswersApi = async (
         navigate('/dashboard/home');
         toast.success(response?.data?.message)
         console.log(response)
+        setIsLoading(false)
     } catch (error) {
+        setIsLoading(false)
         toast.error(error?.response?.data?.message)
     }
 }
