@@ -38,7 +38,7 @@ export default function Navbar() {
                                 localStorage.clear();
                                 toast.success("Logout successful. Redirecting to login page");
                                 setTimeout(() => {
-                                    navigate('/login')
+                                    navigate('/')
                                 }, 1000);
                             }}>Confirm</button>
                         </div>

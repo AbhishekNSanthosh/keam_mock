@@ -4,7 +4,7 @@ import { privateGateway, publicGateway } from "../../../services/apiGateways"
 
 export const login = async (
     email,
-    dob,
+    password,
     navigate,
     setIsLoading,
     setEmail,
@@ -12,8 +12,8 @@ export const login = async (
 ) => {
     setIsLoading(true)
     try {
-        const response = await publicGateway.post(routes?.loginRoute, {
-            email, dob
+        const response = await publicGateway.post(routes?.loginTestRoute, {
+            email, password
         })
         toast.success("Login successful", {
             theme: "colored",

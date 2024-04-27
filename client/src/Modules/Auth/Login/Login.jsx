@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
   const [email, setEmail] = useState('');
-  const [dob, setDob] = useState('');
+  const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
 
@@ -19,7 +19,7 @@ export default function Login() {
   }, [])
 
   const handleSubmit = () => {
-    login(email, dob, navigate, setIsLoading, setEmail, setDob);
+    login(email, password, navigate, setIsLoading, setEmail, setPassword);
   }
   return (
     <div className={styles.container}>
@@ -35,9 +35,9 @@ export default function Login() {
             <input onChange={(e) => {
               setEmail(e.target.value)
             }} value={email} type="text" placeholder='Email' className={styles.inp} />
-            <input value={dob} onChange={(e) => {
-              setDob(e.target.value)
-            }} type="date" placeholder='Date of birth' className={styles.inp} />
+            <input value={password} onChange={(e) => {
+              setPassword(e.target.value)
+            }} type="text" placeholder='Password' className={styles.inp} />
           </div>
           <div className={styles.row}>
             <button disabled={isLoading} onClick={(e) => {
